@@ -1,4 +1,4 @@
-using DotNetInterviewApi.Models;
+using DotNetInterviewApi.Services;
 
 namespace DotNetInterviewApi
 {
@@ -13,16 +13,8 @@ namespace DotNetInterviewApi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             
-            // Register application services
+            // Register SportService
             builder.Services.AddScoped<ISportService, SportService>();
-
-            // Bug: Incorrect configuration binding
-            builder.Services.Configure<DatabaseSettings>(
-                builder.Configuration.GetSection("DatabaseSettings"));
-            
-            // Bug: Missing configuration binding for FeatureFlags
-            // builder.Services.Configure<FeatureFlags>(
-            //     builder.Configuration.GetSection("FeatureFlags"));
 
             var app = builder.Build();
 
@@ -32,9 +24,6 @@ namespace DotNetInterviewApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            // Bug: Middleware in wrong order and missing using statement
-            // app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseAuthorization();

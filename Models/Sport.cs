@@ -7,7 +7,7 @@ namespace DotNetInterviewApi.Models
         public int Id { get; set; }
         
         [Required]
-        [StringLength(50)]
+        [StringLength(5, ErrorMessage = "Name cannot be longer than 5 characters.")]
         public string Name { get; set; } = string.Empty;
         
         [Required]
@@ -20,7 +20,6 @@ namespace DotNetInterviewApi.Models
         
         public bool IsOlympicSport { get; set; }
         
-        // Bug: This property will cause serialization issues
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 } 

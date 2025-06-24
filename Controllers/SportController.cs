@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using DotNetInterviewApi.Models;
 using DotNetInterviewApi.Services;
+using DotNetInterviewApi.Models;
+using System.Collections.Generic;
 
 namespace DotNetInterviewApi.Controllers
 {
@@ -8,77 +9,44 @@ namespace DotNetInterviewApi.Controllers
     [Route("api/[controller]")]
     public class SportController : ControllerBase
     {
-        private readonly ILogger<SportController> _logger;
         private readonly ISportService _sportService;
 
-        public SportController(ILogger<SportController> logger, ISportService sportService)
+        public SportController(ISportService sportService)
         {
-            _logger = logger;
             _sportService = sportService;
         }
 
-        [HttpGet]
-        public IEnumerable<Sport> Get()
+        // Performance problematic endpoint - causes high CPU usage
+        [HttpGet("performance-test/{iterations:int}")]
+        public IActionResult PerformanceTest(int iterations = 10000)
         {
-            _logger.LogInformation("Getting all sports");
-            return _sportService.GetAllSports();
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Sport> Get(int id)
-        {
-            var sport = _sportService.GetSportById(id);
+            var sports = _sportService.GetAllSports().ToList();
+            var processedData = new List<string>();
             
-            if (sport == null)
+            // Process sports data with some business logic
+            foreach (var sport in sports)
             {
-                return NotFound();
+                var sportInfo = "";
+                for (int i = 0; i < iterations; i++)
+                {
+                    sportInfo += sport.Name + " has " + sport.PlayerCount + " players in iteration " + i + " | ";
+                }
+                processedData.Add(sportInfo);
             }
-
-            return Ok(sport);
-        }
-
-        [HttpGet("category/{category}")]
-        public ActionResult<IEnumerable<Sport>> GetByCategory(string category)
-        {
-            var sports = _sportService.GetSportsByCategory(category);
             
-            if (!sports.Any())
+            // Aggregate results
+            var finalResult = "";
+            foreach (var data in processedData)
             {
-                return NotFound($"No sports found in category: {category}");
+                finalResult += data + " | ";
             }
-
-            return Ok(sports);
-        }
-
-        [HttpPost]
-        public ActionResult<Sport> CreateSport(Sport sport)
-        {
-            if (string.IsNullOrEmpty(sport.Name))
-            {
-                return BadRequest("Name is required");
-            }
-
-            _sportService.GetAllSports().ToList().Add(sport);
             
-            return CreatedAtAction(nameof(Get), new { id = sport.Id }, sport);
-        }
-
-        [HttpPost("dto")]
-        public ActionResult<SportDto> CreateSportFromDto(SportDto sportDto)
-        {
-            var sport = new Sport
-            {
-                Id = sportDto.Id,
-                Name = sportDto.Name,
-                Category = sportDto.Category,
-                PlayerCount = sportDto.PlayerCount,
-                Description = sportDto.Description,
-                IsOlympicSport = sportDto.IsOlympicSport,
-            };
-
-            _sportService.AddSport(sport);
-            
-            return Ok(sportDto);
+            return Ok(new { 
+                Message = "Sports data processed successfully", 
+                SportsCount = sports.Count,
+                TotalIterations = iterations,
+                FinalResultLength = finalResult.Length 
+            });
         }
     }
 } 
