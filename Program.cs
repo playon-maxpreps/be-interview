@@ -1,10 +1,4 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-// using Microsoft.Extensions.Logging; // Missing using statement
-using DotNetInterviewApi.Services;
 using DotNetInterviewApi.Models;
-// using DotNetInterviewApi.Middleware; // Missing using statement
 
 namespace DotNetInterviewApi
 {
