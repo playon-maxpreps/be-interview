@@ -20,7 +20,6 @@ namespace DotNetInterviewApi.Services
 
         public Sport[] GetAllSports()
         {
-            //KEN Remove to array
             return _sports;
         }
 
