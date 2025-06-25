@@ -14,7 +14,7 @@ Instructions
 	2. Get the project to build with no errors and no warnings.
 	3. While working on the following steps, if you add a function, make sure it doesn't return null or a not implemented exception.
 	4. Create RESTful endpoints:
-	    0. Create an endpoint to list all of the sports from the SportsService
+	        0. Create an endpoint to list all of the sports from the SportsService
 		1. Create a RESTful endpoint to get a sport by ID
 		2. Create a RESTful endpoint to create a new sport (making sure the ID of the new sport is unique).
 		3. Create a RESTful endpoint to update a sport by ID.
