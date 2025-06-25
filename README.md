@@ -24,4 +24,4 @@ Instructions
 	7. (Optional) Create a RESTful endpoint to patch a sport by ID
   	8. (Optional) Add an appsettings.json file and read some config.
 	9. Give us feedback about the project. Did you learn anything? Can we improve this project?
-   10. If you completed all the above 8 steps - Awesome! Thanks for participating in the first phase of your interview.
+    10. If you completed all the above 8 steps - Awesome! Thanks for participating in the first phase of your interview.
