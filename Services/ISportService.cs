@@ -4,7 +4,7 @@ namespace DotNetInterviewApi.Services
 {
     public interface ISportService
     {
-        //Task with same name already exists
+        //Function with this name in SportService already exists
         Task<Sport[]> GetAllSportsAsync();
 
         Task<bool> IsSportOlympicAsync(int id);
