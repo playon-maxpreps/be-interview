@@ -4,6 +4,8 @@ namespace DotNetInterviewApi.Services
 {
     public interface ISportService
     {
-        IEnumerable<Sport> GetAllSports();
+        Task<Sport[]> GetAllSportsAsync();
+
+        Task<bool> IsSportOlympicAsync(int id);
     }
 } 
