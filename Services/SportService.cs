@@ -18,6 +18,7 @@ namespace DotNetInterviewApi.Services
             Sport { Id = 10, Name = "Cycling", Category = "Individual Sports", PlayerCount = 1, Description = "Racing on bicycles", IsOlympicSport = 1 }
         };
 
+        //Do not add it twice
         public Sport[] GetAllSports()
         {
             return _sports;
