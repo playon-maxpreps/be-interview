@@ -1,27 +1,61 @@
-# Welcome to DotNet Interview API
+# DotNet Interview API (AI-First)
 
-Pre Requisite: 
-------------------------
-	0. Feel free to use Visual Studio 2022 or later or Visual Code
-	1. Co-pilot must be turned off
-	2. Postman or other utility must be ready to test API endpoints
-	3. Discuss and write comments as you fix any items
-	4. Don't spend too much time fixing one item.
-Instructions
-------------------------
-	0. Clone the repository and open it in IDE of your choice.
-	1. Create a branch from the cloned repostory and name it as "<your-first-name>-updates". All new changes will go into your new branch.
-	2. Get the project to build with no errors and no warnings.
-	3. While working on the following steps, if you add a function, make sure it doesn't return null or a not implemented exception.
-	4. Create RESTful endpoints:
-	        0. Create an endpoint to list all of the sports from the SportsService
-		1. Create a RESTful endpoint to get a sport by ID
-		2. Create a RESTful endpoint to create a new sport (making sure the ID of the new sport is unique).
-		3. Create a RESTful endpoint to update a sport by ID.
-		4. Create a RESTful endpoint to delete a sport by ID.
-	5. Log how long it takes to get a sport by ID (Save it to a File).
-	6. (Optional) Add Swagger Documentation to the above endpoints.
-	7. (Optional) Create a RESTful endpoint to patch a sport by ID
-  	8. (Optional) Add an appsettings.json file and read some config.
-	9. Give us feedback about the project. Did you learn anything? Can we improve this project?
-    10. If you completed all the above 8 steps - Awesome! Thanks for participating in the first phase of your interview.
+## Goal
+This exercise measures two things together:
+1. Your ability to build/debug C# REST APIs.
+2. Your ability to use AI coding assistants effectively and safely.
+
+## Timebox
+- Hard limit: **30 minutes**
+- Expected for strong AI-assisted workflow: **~15 minutes**
+
+## Allowed Tools
+AI assistant use is **expected** for this exercise.
+
+You may use any of the following:
+- Codex
+- Claude
+- GitHub Copilot Chat
+- Equivalent AI coding assistant
+
+Use of AI is part of the evaluation. You are expected to verify and correct AI output.
+
+## Setup
+1. Clone this repository.
+2. Create a branch named `<your-first-name>-updates`.
+3. Complete the required tasks below.
+4. Commit your changes to your branch.
+
+## Required Tasks
+1. Make the project build successfully.
+2. Implement RESTful endpoints for `Sport`:
+   - List all sports
+   - Get sport by ID
+   - Create sport
+   - Update sport by ID
+   - Delete sport by ID
+3. Ensure endpoint behavior is correct:
+   - Use appropriate HTTP status codes.
+   - Return `404` when an ID is not found.
+   - Reject invalid request bodies with `400`.
+   - Do not leave any method returning `null` or throwing `NotImplementedException`.
+4. Add request timing for "get sport by ID" and write the result to a file.
+5. Fill out `AI_USAGE.md` in this repo.
+
+## Deliverables
+Your branch should include:
+1. Working code for the required API behavior.
+2. `AI_USAGE.md` completed with your real workflow.
+3. A short note in commit message(s) describing major fixes/decisions.
+
+## AI Usage Expectations
+You are not graded on writing all code manually.
+You are graded on whether you can:
+1. Ask useful questions/prompts.
+2. Detect incorrect AI suggestions.
+3. Verify behavior quickly.
+4. Ship a correct result within time.
+
+## Notes
+- Keep changes focused on completing the required tasks.
+- Optional extras (Swagger, PATCH endpoint, config cleanup) are welcome only if required tasks are already done.
